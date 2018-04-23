@@ -21,7 +21,7 @@ node {
 		}
 
 		 stage('Create Docker Image') {
-		      sh "docker build -t validateEmployeeByLoginId:latest  -t validateEmployeeByLoginId --pull --no-cache ."
+		      sh "docker build -t validateemployeebyloginid:latest  -t validateemployeebyloginid:latest --pull --no-cache ."
 		}
 
 }
