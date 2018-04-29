@@ -2,10 +2,12 @@ package test.java;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.List;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import main.java.Employee;
 import main.java.EmployeeService;
 
 class EmployeeServiceTest {
@@ -26,9 +28,12 @@ class EmployeeServiceTest {
     	EmployeeService empService = new EmployeeService();
     	String strLogin = "yyy"; 
     	String strPassword = "xxx";
-    	int intEmployees = empService.getEmployeeByLoginId(strLogin, strPassword);
-    	assertNotEquals(intEmployees,2);
-       assertEquals(message,messageUtil.printMessage());
+    	List<Employee> lstEmployeeCount = empService.getEmployeeByLoginId(strLogin, strPassword);
+    	String strNull = "Test";
+    	Employee empCurrent = lstEmployeeCount.get(0);
+    	int intCount = empCurrent.getEmployeeCount();
+    	assertEquals(0, intCount);
+       assertEquals(message,strNull);
     }
 
 }

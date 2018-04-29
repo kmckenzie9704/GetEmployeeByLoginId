@@ -1,13 +1,16 @@
 package main.java;
 
+import java.util.ArrayList; 
+import java.util.List;
 import java.sql.*;
 
 
 public class EmployeeDao {
 	
-	public int getEmployeeByLoginId(String strLogin, String strPassword) throws Exception { 		      
-	int intCount = 0; 
-
+	public List<Employee> getEmployeeByLoginId(String strLogin, String strPassword) throws Exception { 		      
+	List<Employee> lstEmployeeCount = new ArrayList<Employee>(); 
+	Employee empCurrent = null;
+	
 	try
 	{
 		Class.forName("com.mysql.jdbc.Driver");
@@ -37,9 +40,12 @@ public class EmployeeDao {
 		String query = "SELECT COUNT(*) FROM Employees WHERE empLogin = '" + strLogin + "' AND empPassword = '" + strPassword + "'";
 
 		ResultSet m_ResultSet = m_Statement.executeQuery(query);
-		m_ResultSet.next();
-		intCount = m_ResultSet.getInt(1);
-		
+
+		while (m_ResultSet.next()) {
+			empCurrent = new Employee();
+			empCurrent.setEmployeeCount( m_ResultSet.getInt(1));
+			lstEmployeeCount.add(empCurrent); 
+		}
 		m_ResultSet.close();
 		m_Statement.close();
 		m_Connection.close();
@@ -48,6 +54,6 @@ public class EmployeeDao {
 		se.printStackTrace();
 	}
 
-	return intCount; 
+	return lstEmployeeCount; 
 	}
 }

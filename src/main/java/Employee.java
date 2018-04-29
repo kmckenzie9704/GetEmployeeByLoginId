@@ -14,6 +14,7 @@ public class Employee implements Serializable {
 	   private String employeeLogin;
 	   private String employeePassword;
 	   private int employeeNumber;
+	   private int employeeCount;
 
 	   public Employee(){} 
 	    
@@ -63,6 +64,10 @@ public class Employee implements Serializable {
 		      return employeeNumber; 
 	   } 
 		   
+	   public int getEmployeeCount() { 
+		      return employeeCount; 
+	   } 
+		   
 	   public String getemployeeLogin() { 
 		      return employeeLogin; 
 		   } 
@@ -85,4 +90,9 @@ public class Employee implements Serializable {
 	   public void setEmployeeNumber(int intemployeeNumber) { 
 	      this.employeeNumber = intemployeeNumber; 
 	   }   
+	   
+	   @XmlElement 
+	   public void setEmployeeCount(int intemployeeNumber) { 
+	      this.employeeCount =intemployeeNumber;
+	   }
 }

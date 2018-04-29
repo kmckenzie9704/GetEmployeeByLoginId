@@ -11,8 +11,9 @@ node {
 
 
         stage('Build') {
-            sh "mvn -B -Dmaven.test.failure.ignore=true clean package"
-            junit 'target/surefire-reports/**/*.xml'
+        	sh "mvn -B -DskipTests clean package"
+            //sh "mvn -B -Dmaven.test.failure.ignore=true clean package"
+            //junit 'target/surefire-reports/**/*.xml'
         }
 
 		 stage('Copy WAR Image') {
